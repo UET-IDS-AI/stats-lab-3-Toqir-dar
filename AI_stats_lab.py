@@ -50,7 +50,7 @@ def card_experiment():
         absolute_error
     """
 
- # Analytical probabilities
+
     P_A = 4 / 52
     P_B = 3 / 52
     P_B_given_A = 3 / 51
@@ -59,7 +59,7 @@ def card_experiment():
     # Independence check (not returned, but computed logically)
     # P_AB == P_A * P_B ?  -> False
 
-    # Simulation
+
     rng = np.random.default_rng(42)
     trials = 200_000
 
@@ -129,7 +129,6 @@ def bernoulli_lightbulb(p=0.05):
     theoretical_P_X_1 = pmf(1)
     theoretical_P_X_0 = pmf(0)
 
-    # Simulation
     rng = np.random.default_rng(42)
     trials = 100_000
     count_X_1 = sum(1 for _ in range(trials) if rng.choice([0, 1], p=[1-p, p]) == 1)
@@ -179,7 +178,7 @@ def binomial_bulbs(n=10, p=0.05):
     P_0 = (1-p)**n
     p_2 = math.comb(n, 2) * (p**2) * ((1-p)**(n-2))
     P_ge_1 = 1 - P_0
-    #Simulation
+
     rng = np.random.default_rng(42)
     trails = 100000
     count_ge_1 = sum(1 for _ in range(trails) if sum(rng.choice([0, 1], p=[1-p, p], size=n)) >= 1)
@@ -230,12 +229,12 @@ def geometric_die():
 
     p = 1 / 6
 
-    # Theoretical
+
     P_1 = p
     P_3 = ((5/6) ** 2) * p
     P_gt_4 = (5/6) ** 4
 
-    # Simulation
+
     rng = np.random.default_rng(42)
     trials = 200_000
 
@@ -283,7 +282,7 @@ def poisson_customers(lam=12):
         empirical_P_ge_18,
         absolute_error
     """
-   # Theoretical
+
     P_0 = math.exp(-lam)
     P_15 = math.exp(-lam) * (lam ** 15) / math.factorial(15)
 
@@ -292,7 +291,7 @@ def poisson_customers(lam=12):
         for k in range(18)
     )
 
-    # Simulation
+
     rng = np.random.default_rng(42)
     trials = 100_000
 
